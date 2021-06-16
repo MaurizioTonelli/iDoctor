@@ -1,0 +1,22 @@
+.appContainer {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 50px 1fr;
+}
+
+.navBar {
+  grid-column: 2 / span 2;
+  background-color: red;
+}
+
+.sideBar {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+}
+.content {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  background-color: rgb(211, 211, 211);
+}

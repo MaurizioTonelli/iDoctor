@@ -1,0 +1,54 @@
+.sideBar {
+  background-color: #27384f;
+  height: 100%;
+}
+.appTitle {
+  background-color: #3575a3;
+  color: white;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+.appTitle h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+}
+.appTitle h1 > span {
+  font-size: 0.7em;
+  color: #ccc;
+}
+.expanded {
+  width: 300px;
+}
+.searchBar {
+  height: 60px;
+  background-color: #141d29;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchBar input[type="text"] {
+  border: none;
+  padding: 8px;
+  border-radius: 30px;
+  width: 80%;
+  background-color: #313842;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+}
+.links a {
+  display: flex;
+  justify-content: flex-start;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  transition: all 0.2s ease-in-out;
+}
+.links a:hover {
+  background-color: #d62b5e;
+}

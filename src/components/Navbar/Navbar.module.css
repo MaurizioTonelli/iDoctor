@@ -1,0 +1,42 @@
+.navBar {
+  background-color: #45b0e6;
+  height: 50px;
+}
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.notifications {
+  background-color: #3575a3;
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  color: white;
+  width: 50px;
+  justify-content: center;
+}
+.notifications:hover {
+  cursor: pointer;
+  color: lightgray;
+  opacity: 0.5;
+}
+.profile {
+  background-color: #285372;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: white;
+  padding: 5px;
+}
+.profile:hover {
+  cursor: pointer;
+  color: black;
+  opacity: 0.5;
+}
+
+.profileImage {
+  max-height: 40px;
+  clip-path: circle();
+}
