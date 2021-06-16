@@ -1,19 +1,12 @@
-import Navbar from "./components/Navbar/Navbar.jsx";
 import "./globals.css";
-import styles from "./App.module.css";
-import Sidebar from "./components/Sidebar/Sidebar.jsx";
+import { BrowserRouter as Router } from "react-router-dom";
+import Dashboard from "./Dashboard.js";
 
 function App() {
   return (
-    <div className={styles.appContainer}>
-      <div className={styles.navBar}>
-        <Navbar />
-      </div>
-      <div className={styles.sideBar}>
-        <Sidebar />
-      </div>
-      <div className={styles.content}></div>
-    </div>
+    <Router>
+      <Dashboard />
+    </Router>
   );
 }
 
