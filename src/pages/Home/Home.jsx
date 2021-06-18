@@ -7,11 +7,7 @@ const Home = () => {
   return (
     <>
       <h1 className={styles.title}>PATIENT INFO</h1>
-      <div className={styles.whiteBoard}>
-        <PatientInfoCard />
-        <MedicalHistory />
-        <MedicalExams />
-      </div>
+      <div className={styles.whiteBoard}>Home</div>
     </>
   );
 };

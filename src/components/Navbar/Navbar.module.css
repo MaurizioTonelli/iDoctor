@@ -29,6 +29,7 @@
   flex-direction: row;
   color: white;
   padding: 5px;
+  height: 50px;
 }
 .profile:hover {
   cursor: pointer;

@@ -27,7 +27,11 @@ const Sidebar = () => {
       <SearchBar />
       <div className={styles.links}>
         {sidebarData &&
-          sidebarData.map((link) => <a href={link.url}>{link.title}</a>)}
+          sidebarData.map((link, i) => (
+            <a key={i} href={link.url}>
+              {link.title}
+            </a>
+          ))}
       </div>
     </nav>
   );

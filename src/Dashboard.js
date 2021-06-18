@@ -3,8 +3,9 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import styles from "./Dashboard.module.css";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import Home from "./pages/Home/Home.jsx";
+import Patient from "./pages/Patients/Patient/Patient.jsx";
 import { Switch, Route } from "react-router-dom";
-import Example from "./pages/Example.js";
+import Patients from "./pages/Patients/Patients.jsx";
 const Dashboard = () => {
   return (
     <div className={styles.appContainer}>
@@ -19,8 +20,11 @@ const Dashboard = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/example">
-            <Example />
+          <Route exact path="/pacientes">
+            <Patients />
+          </Route>
+          <Route path="/pacientes/:id">
+            <Patient />
           </Route>
         </Switch>
       </div>
