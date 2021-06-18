@@ -1,0 +1,39 @@
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #eee;
+  padding: 10px;
+  box-shadow: 3px 3px 3px #ccc;
+  margin: 10px 0px;
+}
+.date {
+  border-right: 2px solid #3575a3;
+  padding: 0px 5px;
+  font-family: "Open Sans", sans-serif;
+  color: #555;
+}
+.invoice {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  border-right: 2px solid #3575a3;
+  padding: 0px 5px;
+}
+.message {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  margin-left: 5px;
+}
+.status {
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  margin-left: auto;
+  padding: 5px;
+}
+.delivered {
+  background-color: #32a852;
+}
+.pending {
+  background-color: rgb(219, 60, 86);
+}

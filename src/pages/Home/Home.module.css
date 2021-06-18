@@ -1,0 +1,16 @@
+.title {
+  font-family: "Poppins", sans-serif;
+  align-self: start;
+  margin-left: 5%;
+  font-weight: 300;
+  color: #555;
+  font-size: 26px;
+}
+.whiteBoard {
+  background-color: white;
+  margin: 10px;
+  height: calc(100vh - 150px);
+  width: 95%;
+  box-shadow: 3px 3px 5px #888;
+  overflow-y: auto;
+}

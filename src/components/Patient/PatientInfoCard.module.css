@@ -1,0 +1,38 @@
+.cardContainer {
+  background-color: #ddd;
+  padding: 15px;
+  margin: 10px;
+}
+.cardContainer > h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #555;
+}
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.patientProfile {
+  width: 70px;
+  height: 70px;
+  max-width: 70px;
+  object-fit: cover;
+  border: 2px solid red;
+  border-radius: 50%;
+  margin: 10px 20px;
+}
+.info {
+  flex: 1;
+}
+.info h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #555;
+}
+.info p {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+}

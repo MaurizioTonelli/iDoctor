@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import styles from "./Dashboard.module.css";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import Home from "./pages/Home.js";
+import Home from "./pages/Home/Home.jsx";
 import { Switch, Route } from "react-router-dom";
 import Example from "./pages/Example.js";
 const Dashboard = () => {

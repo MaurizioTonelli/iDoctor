@@ -1,0 +1,19 @@
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #eee;
+  padding: 10px;
+  box-shadow: 3px 3px 3px #ccc;
+  margin: 10px 0px;
+}
+.date {
+  border-right: 2px solid #3575a3;
+  padding: 0px 5px;
+  font-family: "Open Sans", sans-serif;
+  color: #555;
+}
+.message {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  margin-left: 5px;
+}

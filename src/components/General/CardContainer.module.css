@@ -1,0 +1,11 @@
+.cardContainer {
+  background-color: #ddd;
+  padding: 15px;
+  margin: 10px;
+}
+.cardContainer > h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #555;
+}

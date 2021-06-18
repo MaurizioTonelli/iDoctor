@@ -19,4 +19,8 @@
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
   background-color: rgb(211, 211, 211);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
