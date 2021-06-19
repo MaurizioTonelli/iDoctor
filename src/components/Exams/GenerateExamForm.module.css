@@ -1,0 +1,22 @@
+.resultForm {
+  display: flex;
+  flex-direction: column;
+}
+.resultForm label {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  margin-top: 15px;
+}
+.resultForm input[type="submit"] {
+  margin: 10px;
+  width: 40%;
+  align-self: flex-end;
+  padding: 10px 5px;
+  background-color: #d62b5e;
+  color: white;
+  border: none;
+}
+.resultForm input[type="submit"]:hover {
+  background-color: #911e40;
+  cursor: pointer;
+}

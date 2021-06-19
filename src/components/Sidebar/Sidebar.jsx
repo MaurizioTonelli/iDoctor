@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
 import { sidebarData } from "./data/sidebarData";
+import { Link } from "react-router-dom";
 
 const AppTitle = () => {
   return (
@@ -28,9 +29,9 @@ const Sidebar = () => {
       <div className={styles.links}>
         {sidebarData &&
           sidebarData.map((link, i) => (
-            <a key={i} href={link.url}>
+            <Link key={i} to={link.url}>
               {link.title}
-            </a>
+            </Link>
           ))}
       </div>
     </nav>

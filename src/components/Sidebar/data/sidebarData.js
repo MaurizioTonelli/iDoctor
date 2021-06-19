@@ -12,6 +12,11 @@ export const sidebarData = [
   {
     title: "Exámenes médicos",
     auth: "doctor",
-    url: "/ksdfd",
+    url: "/examenes",
+  },
+  {
+    title: "Exámenes médicos (Laboratorista)",
+    auth: "doctor",
+    url: "/examenesagenerar",
   },
 ];

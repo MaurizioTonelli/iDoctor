@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 h1 {
@@ -50,4 +51,15 @@ h2 {
 .link:hover {
   cursor: pointer;
   background-color: #8f1d3f;
+}
+
+.options {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 20px;
+}
+.options:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }

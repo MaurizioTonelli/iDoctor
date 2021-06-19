@@ -1,0 +1,60 @@
+.commentForm {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.commentForm textarea {
+  width: calc(100% - 50px);
+  height: 100%;
+  resize: none;
+  border: none;
+}
+
+.commentForm button {
+  height: 100%;
+  width: 50px;
+  border: none;
+  background-color: #45b0e6;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.commentForm button:hover {
+  background-color: #398bb4;
+  cursor: pointer;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #eee;
+  padding: 10px;
+  box-shadow: 3px 3px 3px #ccc;
+  margin: 10px 0px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.date {
+  border-right: 2px solid #3575a3;
+  padding: 0px 5px;
+  font-family: "Open Sans", sans-serif;
+  color: #555;
+}
+.message {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  margin-left: 5px;
+}
+.itemContainer button {
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  margin-left: auto;
+  padding: 5px;
+  background-color: rgb(219, 60, 86);
+  border: none;
+}
+.itemContainer button:hover {
+  background-color: rgb(143, 42, 58);
+  cursor: pointer;
+}

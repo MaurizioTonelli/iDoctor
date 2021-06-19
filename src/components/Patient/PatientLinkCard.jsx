@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./PatientLinkCard.module.css";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 const PatientLinkCard = () => {
   return (
@@ -17,6 +18,9 @@ const PatientLinkCard = () => {
       <a className={styles.link} href="/pacientes/23">
         VER HISTORIAL
       </a>
+      <div className={styles.options}>
+        <BsThreeDotsVertical />
+      </div>
     </div>
   );
 };

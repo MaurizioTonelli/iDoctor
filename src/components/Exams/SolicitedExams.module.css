@@ -1,0 +1,66 @@
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #eee;
+  padding: 10px;
+  box-shadow: 3px 3px 3px #ccc;
+  margin: 10px 0px;
+  text-decoration: none;
+}
+.itemContainer:hover {
+  box-shadow: 6px 6px 6px #bbb;
+}
+.date {
+  border-right: 2px solid #3575a3;
+  padding: 0px 5px;
+  font-family: "Open Sans", sans-serif;
+  color: #555;
+}
+.invoice {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  border-right: 2px solid #3575a3;
+  padding: 0px 5px;
+}
+.examName {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  margin-left: 5px;
+}
+.patientName {
+  font-family: "Open Sans", sans-serif;
+  color: #3575a3;
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+.status {
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  margin-left: auto;
+  padding: 5px;
+}
+.delivered {
+  background-color: #32a852;
+}
+.pending {
+  background-color: rgb(219, 60, 86);
+}
+
+.newExam {
+  background-color: rgb(219, 60, 86);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 5px;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+.newExam:hover {
+  background-color: rgb(151, 42, 60);
+  cursor: pointer;
+}
