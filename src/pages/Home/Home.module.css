@@ -1,16 +1,44 @@
-.title {
-  font-family: "Poppins", sans-serif;
-  align-self: start;
-  margin-left: 5%;
-  font-weight: 300;
-  color: #555;
-  font-size: 26px;
-}
-.whiteBoard {
-  background-color: white;
+.actionCard {
   margin: 10px;
-  height: calc(100vh - 150px);
-  width: 95%;
-  box-shadow: 3px 3px 5px #888;
-  overflow-y: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  padding: 15px;
+  box-shadow: 5px 5px 5px #999;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+.actionCard h1 {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(70, 119, 160);
+  font-weight: 300;
+  text-align: center;
+}
+.actionCard:hover {
+  box-shadow: 9px 9px 5px #999;
+  background-color: rgb(80, 121, 155);
+  cursor: pointer;
+  color: white;
+}
+.actionCard:hover .icon {
+  color: white;
+}
+.actionCard:hover h1 {
+  color: white;
+}
+.icon {
+  font-size: 4em;
+  color: #666;
+}
+
+.actionCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.assignment {
+  color: #777;
 }

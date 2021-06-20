@@ -11,6 +11,7 @@ import Exam from "./pages/Exams/Exam/Exam";
 import SolicitExam from "./pages/Exams/SolicitExam/SolicitExam.jsx";
 import ExamsToGenerate from "./pages/Exams/ExamsToGenerate.jsx";
 import GenerateExam from "./pages/Exams/GenerateExam/GenerateExam.jsx";
+import NewPatient from "./pages/Patients/NewPatient/NewPatient.jsx";
 const Dashboard = () => {
   return (
     <div className={styles.appContainer}>
@@ -27,6 +28,9 @@ const Dashboard = () => {
           </Route>
           <Route exact path="/pacientes">
             <Patients />
+          </Route>
+          <Route exact path="/pacientes/nuevo">
+            <NewPatient />
           </Route>
           <Route path="/pacientes/:id">
             <Patient />

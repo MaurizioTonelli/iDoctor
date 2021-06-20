@@ -1,5 +1,10 @@
 export const sidebarData = [
   {
+    title: "Inicio",
+    auth: "doctor",
+    url: "/",
+  },
+  {
     title: "Mis pacientes",
     auth: "doctor",
     url: "/pacientes",
