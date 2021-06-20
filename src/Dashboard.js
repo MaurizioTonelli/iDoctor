@@ -12,6 +12,9 @@ import SolicitExam from "./pages/Exams/SolicitExam/SolicitExam.jsx";
 import ExamsToGenerate from "./pages/Exams/ExamsToGenerate.jsx";
 import GenerateExam from "./pages/Exams/GenerateExam/GenerateExam.jsx";
 import NewPatient from "./pages/Patients/NewPatient/NewPatient.jsx";
+import Users from "./pages/Users/Users.jsx";
+import NewUser from "./pages/Users/NewUser/NewUser.jsx";
+import User from "./pages/Users/User/User.jsx";
 const Dashboard = () => {
   return (
     <div className={styles.appContainer}>
@@ -49,6 +52,15 @@ const Dashboard = () => {
           </Route>
           <Route path="/examenesagenerar/:id">
             <GenerateExam />
+          </Route>
+          <Route exact path="/personal">
+            <Users />
+          </Route>
+          <Route exact path="/personal/nuevo">
+            <NewUser />
+          </Route>
+          <Route path="/personal/:id">
+            <User />
           </Route>
         </Switch>
       </div>

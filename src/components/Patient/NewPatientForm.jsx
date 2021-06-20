@@ -129,6 +129,8 @@ const PatientForm = () => {
   return (
     <>
       <form className={styles.patientForm}>
+        <label htmlFor="picture">Foto del paciente</label>
+        <input type="file" name="picture" id="picture" />
         <label htmlFor="name">Nombre completo</label>
         <input type="text" id="name" name="name" />
         <label htmlFor="birthDate">Fecha de nacimiento</label>

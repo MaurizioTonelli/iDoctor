@@ -24,4 +24,9 @@ export const sidebarData = [
     auth: "doctor",
     url: "/examenesagenerar",
   },
+  {
+    title: "Personal",
+    auth: "administradorr",
+    url: "/personal",
+  },
 ];
