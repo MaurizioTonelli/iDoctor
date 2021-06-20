@@ -12,7 +12,7 @@ export const sidebarData = [
   {
     title: "Mis consultas",
     auth: "doctor",
-    url: "/ksdfd",
+    url: "/consultas",
   },
   {
     title: "Exámenes médicos",

@@ -15,6 +15,9 @@ import NewPatient from "./pages/Patients/NewPatient/NewPatient.jsx";
 import Users from "./pages/Users/Users.jsx";
 import NewUser from "./pages/Users/NewUser/NewUser.jsx";
 import User from "./pages/Users/User/User.jsx";
+import Consultations from "./pages/Consultations/Consultations.jsx";
+import Consultation from "./pages/Consultations/Consultation/Consultation.jsx";
+import NewConsultation from "./pages/Consultations/New Consultation/NewConsultation.jsx";
 const Dashboard = () => {
   return (
     <div className={styles.appContainer}>
@@ -61,6 +64,15 @@ const Dashboard = () => {
           </Route>
           <Route path="/personal/:id">
             <User />
+          </Route>
+          <Route exact path="/consultas">
+            <Consultations />
+          </Route>
+          <Route exact path="/consultas/nueva">
+            <NewConsultation />
+          </Route>
+          <Route path="/consultas/:id">
+            <Consultation />
           </Route>
         </Switch>
       </div>

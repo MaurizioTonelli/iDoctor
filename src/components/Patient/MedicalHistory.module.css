@@ -17,3 +17,28 @@
   color: #333;
   margin-left: 5px;
 }
+
+.consultationForm {
+  display: flex;
+  align-items: center;
+}
+.consultationForm button {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: white;
+  background-color: rgb(77, 129, 172);
+  font-size: 18px;
+}
+.consultationForm button:hover {
+  background-color: rgb(52, 87, 116);
+  cursor: pointer;
+}
+.consultationComment {
+  resize: none;
+  width: 100%;
+  border: 1px solid #ccc;
+}
