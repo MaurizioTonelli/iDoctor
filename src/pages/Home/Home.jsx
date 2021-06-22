@@ -38,17 +38,17 @@ const BienvenidaDoctor = () => {
         <ActionCard
           title="Ver mis pacientes"
           icon={<FaUsers />}
-          url="/pacientes"
+          url="/dashboard/pacientes"
         />
         <ActionCard
           title="Ver mis consultas"
           icon={<FaRegAddressBook />}
-          url="/consultas"
+          url="/dashboard/consultas"
         />
         <ActionCard
           title="Ver examenes médicos"
           icon={<FaFileMedicalAlt />}
-          url="/examenes"
+          url="/dashboard/examenes"
         />
       </div>
     </CardContainer>
@@ -68,13 +68,13 @@ const BienvenidaEnfermero = () => {
         <ActionCard
           title="Ver mis pacientes"
           icon={<FaUsers />}
-          url="/pacientes"
+          url="/dashboard/pacientes"
         />
 
         <ActionCard
           title="Ver examenes médicos"
           icon={<FaFileMedicalAlt />}
-          url="/examenes"
+          url="/dashboard/examenes"
         />
       </div>
     </CardContainer>
@@ -88,7 +88,7 @@ const BienvenidaLaboratorista = () => {
         <ActionCard
           title="Ver examenes médicos"
           icon={<FaFileMedicalAlt />}
-          url="/examenesagenerar"
+          url="/dashboard/examenesagenerar"
         />
       </div>
     </CardContainer>
@@ -99,8 +99,16 @@ const BienvenidaAdministrador = () => {
     <CardContainer>
       <h1>Bienvenido, administrador</h1>
       <div className={styles.actionCards}>
-        <ActionCard title="Pacientes" icon={<FaUserPlus />} url="/pacientes" />
-        <ActionCard title="Personal" icon={<FaUserMd />} url="/personal" />
+        <ActionCard
+          title="Pacientes"
+          icon={<FaUserPlus />}
+          url="/dashboard/pacientes"
+        />
+        <ActionCard
+          title="Personal"
+          icon={<FaUserMd />}
+          url="/dashboard/personal"
+        />
       </div>
     </CardContainer>
   );

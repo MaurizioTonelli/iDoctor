@@ -7,7 +7,7 @@ import { IoIosAddCircle } from "react-icons/io";
 
 const AddPatientCard = () => {
   return (
-    <Link className={styles.cardContainer} to="/pacientes/nuevo">
+    <Link className={styles.cardContainer} to="/dashboard/pacientes/nuevo">
       <div className={styles.icon}>
         <IoIosAddCircle />
       </div>

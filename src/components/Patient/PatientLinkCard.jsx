@@ -15,7 +15,7 @@ const PatientLinkCard = () => {
       <h2 className={styles.diagnosis}>DIAGNÓSTICO:</h2>
       <h2 className={styles.diagnosisResult}>HEPATITIS A</h2>
       <h2 className={styles.roomNumber}>HABITACION 33</h2>
-      <a className={styles.link} href="/pacientes/23">
+      <a className={styles.link} href="/dashboard/pacientes/23">
         VER HISTORIAL
       </a>
       <div className={styles.options}>

@@ -2,31 +2,31 @@ export const sidebarData = [
   {
     title: "Inicio",
     auth: "doctor",
-    url: "/",
+    url: "/dashboard/",
   },
   {
     title: "Mis pacientes",
     auth: "doctor",
-    url: "/pacientes",
+    url: "/dashboard/pacientes",
   },
   {
     title: "Mis consultas",
     auth: "doctor",
-    url: "/consultas",
+    url: "/dashboard/consultas",
   },
   {
     title: "Exámenes médicos",
     auth: "doctor",
-    url: "/examenes",
+    url: "/dashboard/examenes",
   },
   {
     title: "Exámenes médicos (Laboratorista)",
     auth: "doctor",
-    url: "/examenesagenerar",
+    url: "/dashboard/examenesagenerar",
   },
   {
     title: "Personal",
     auth: "administradorr",
-    url: "/personal",
+    url: "/dashboard/personal",
   },
 ];

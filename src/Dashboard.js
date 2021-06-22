@@ -18,6 +18,7 @@ import User from "./pages/Users/User/User.jsx";
 import Consultations from "./pages/Consultations/Consultations.jsx";
 import Consultation from "./pages/Consultations/Consultation/Consultation.jsx";
 import NewConsultation from "./pages/Consultations/New Consultation/NewConsultation.jsx";
+import Login from "./pages/Login/Login.jsx";
 const Dashboard = () => {
   return (
     <div className={styles.appContainer}>
@@ -29,49 +30,49 @@ const Dashboard = () => {
       </div>
       <div className={styles.content}>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/dashboard/">
             <Home />
           </Route>
-          <Route exact path="/pacientes">
+          <Route exact path="/dashboard/pacientes">
             <Patients />
           </Route>
-          <Route exact path="/pacientes/nuevo">
+          <Route exact path="/dashboard/pacientes/nuevo">
             <NewPatient />
           </Route>
-          <Route path="/pacientes/:id">
+          <Route path="/dashboard/pacientes/:id">
             <Patient />
           </Route>
-          <Route exact path="/examenes">
+          <Route exact path="/dashboard/examenes">
             <Exams />
           </Route>
-          <Route exact path="/examenes/nuevo">
+          <Route exact path="/dashboard/examenes/nuevo">
             <SolicitExam />
           </Route>
-          <Route path="/examenes/:id">
+          <Route path="/dashboard/examenes/:id">
             <Exam />
           </Route>
-          <Route exact path="/examenesagenerar">
+          <Route exact path="/dashboard/examenesagenerar">
             <ExamsToGenerate />
           </Route>
-          <Route path="/examenesagenerar/:id">
+          <Route path="/dashboard/examenesagenerar/:id">
             <GenerateExam />
           </Route>
-          <Route exact path="/personal">
+          <Route exact path="/dashboard/personal">
             <Users />
           </Route>
-          <Route exact path="/personal/nuevo">
+          <Route exact path="/dashboard/personal/nuevo">
             <NewUser />
           </Route>
-          <Route path="/personal/:id">
+          <Route path="/dashboard/personal/:id">
             <User />
           </Route>
-          <Route exact path="/consultas">
+          <Route exact path="/dashboard/consultas">
             <Consultations />
           </Route>
-          <Route exact path="/consultas/nueva">
+          <Route exact path="/dashboard/consultas/nueva">
             <NewConsultation />
           </Route>
-          <Route path="/consultas/:id">
+          <Route path="/dashboard/consultas/:id">
             <Consultation />
           </Route>
         </Switch>

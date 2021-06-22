@@ -3,3 +3,23 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+.center {
+  display: flex;
+  justify-content: center;
+}
+.newUser {
+  border: none;
+  background-color: #d62b5e;
+  color: white;
+  padding: 10px 5px;
+  margin: 10px 0px 0px 0px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+.newUser:hover {
+  background-color: #881d3d;
+  cursor: pointer;
+}

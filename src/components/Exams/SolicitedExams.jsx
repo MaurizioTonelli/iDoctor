@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const SolicitedExamItem = (props) => {
   return (
-    <Link className={styles.itemContainer} to="/examenes/123">
+    <Link className={styles.itemContainer} to="/dashboard/examenes/123">
       <div className={styles.date}>{props.date}</div>
       <div className={styles.invoice}>FOLIO: {props.invoice}</div>
       <div className={styles.examName}>{props.children}</div>

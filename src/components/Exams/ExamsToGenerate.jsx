@@ -5,7 +5,7 @@ import CardContainer from "../General/CardContainer";
 
 const SolicitedExamItem = (props) => {
   return (
-    <Link className={styles.itemContainer} to="/examenesagenerar/123">
+    <Link className={styles.itemContainer} to="/dashboard/examenesagenerar/123">
       <div className={styles.date}>{props.date}</div>
       <div className={styles.invoice}>FOLIO: {props.invoice}</div>
       <div className={styles.examName}>{props.children}</div>

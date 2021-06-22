@@ -15,7 +15,7 @@ const ConsultationLinkCard = () => {
       <h2 className={styles.dateTime}>FECHA Y HORA:</h2>
       <h2 className={styles.dateTimeResult}>18:00</h2>
       <h2 className={styles.roomNumber}>CONSULTORIO 33</h2>
-      <a className={styles.link} href="/consultas/23">
+      <a className={styles.link} href="/dashboard/consultas/23">
         REALIZAR CONSULTA
       </a>
       <div className={styles.options}>
