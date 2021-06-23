@@ -81,6 +81,7 @@
 .patientForm input[type="text"],
 .patientForm input[type="password"],
 .patientForm input[type="date"],
+.patientForm input[type="number"],
 .patientForm select {
   border: 1px solid #ccc;
   padding: 8px;
@@ -98,4 +99,22 @@
 .patientForm input[type="submit"]:hover {
   background-color: #881c3c;
   cursor: pointer;
+}
+
+.changePassword {
+  display: flex;
+  flex-direction: column;
+}
+
+.errors {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: red;
+}
+
+.error {
+  color: red;
+  font-family: "Open Sans", sans-serif;
 }

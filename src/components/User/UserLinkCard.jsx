@@ -1,20 +1,20 @@
 import React from "react";
 import styles from "./UserLinkCard.module.css";
-
-const UserLinkCard = () => {
+import appData from "../../assets/data/appData";
+const UserLinkCard = (props) => {
   return (
     <div className={styles.cardContainer}>
       <img
         className={styles.image}
-        src="/assets/images/doctor_profile1.jpg"
+        src={appData.apiUrl + "/images/" + props.image}
         alt="patient"
       />
-      <h1>JUAN JOSÉ </h1>
-      <h2>GONZALES MARTÍNEZ</h2>
-      <h2 className={styles.role}>ROL: DOCTOR</h2>
 
-      <h2 className={styles.username}>USUARIO: martinezg123</h2>
-      <a className={styles.link} href="/dashboard/personal/23">
+      <h2>{props.name}</h2>
+      <h2 className={styles.role}>ROL: {props.role}</h2>
+
+      <h2 className={styles.username}>USUARIO: {props.username}</h2>
+      <a className={styles.link} href={"/dashboard/personal/" + props.id}>
         VER MÁS
       </a>
     </div>
