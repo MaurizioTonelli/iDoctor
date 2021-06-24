@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import CardContainer from "../General/CardContainer";
 import styles from "./MedicalHistory.module.css";
 import { IoMdAddCircle } from "react-icons/io";
 import moment from "moment";
+import axios from "axios";
+import appData from "../../assets/data/appData";
 
 const MedicalHistoryItem = (props) => {
   return (
@@ -14,6 +16,27 @@ const MedicalHistoryItem = (props) => {
 };
 
 const MedicalHistory = (props) => {
+  const [entry, setEntry] = useState("");
+  const validateForm = () => {
+    if (entry === "") return false;
+    return true;
+  };
+  const addEntry = () => {
+    if (!validateForm()) return;
+    const formData = new FormData();
+    formData.append("date", moment(new Date()).format("YYYY-MM-DD"));
+    formData.append("comment", entry);
+    axios
+      .post(appData.apiUrl + "/patient/history/" + props.patient.id, formData, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        alert("Ocurrió un error");
+      });
+  };
   return (
     <CardContainer>
       <h1>HISTORIAL CLINICO</h1>
@@ -22,8 +45,10 @@ const MedicalHistory = (props) => {
           <textarea
             className={styles.consultationComment}
             placeholder="Agregar comentario al historial clínico del paciente"
+            value={entry}
+            onChange={(e) => setEntry(e.target.value)}
           ></textarea>
-          <button>
+          <button onClick={addEntry}>
             <IoMdAddCircle />
           </button>
         </div>
