@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import PatientLinkCard from "../../components/Patient/PatientLinkCard";
 import styles from "./Patients.module.css";
 import Whiteboard from "../../components/General/Whiteboard";
@@ -7,6 +7,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import axios from "axios";
 import appData from "../../assets/data/appData";
 import OutsideClickHandler from "react-outside-click-handler";
+import UserContext from "../../UserContext";
 
 const AddPatientCard = () => {
   return (
@@ -115,6 +116,7 @@ const Patients = () => {
   const [modalScreen, setModalScreen] = useState(false);
   const [selectedId, setSelectedId] = useState(0);
   const [action, setAction] = useState("");
+  const user = useContext(UserContext);
 
   const closeModalScreen = () => {
     setModalScreen(false);
@@ -131,16 +133,26 @@ const Patients = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(appData.apiUrl + "/patients", { withCredentials: true })
-      .then((res) => {
-        setPatients(res.data.data);
-      });
+    if (user && user.role === "administrador") {
+      axios
+        .get(appData.apiUrl + "/patients", { withCredentials: true })
+        .then((res) => {
+          setPatients(res.data.data);
+        });
+    } else if (user && (user.role === "doctor" || user.role === "enfermero")) {
+      axios
+        .get(appData.apiUrl + "/assignedPatients/" + user.id, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          setPatients(res.data.data);
+        });
+    }
   }, []);
   return (
     <Whiteboard title="MIS PACIENTES">
       <div className={styles.patients}>
-        <AddPatientCard />
+        {user && user.role === "administrador" && <AddPatientCard />}
         {patients &&
           patients.map((patient) => (
             <PatientLinkCard

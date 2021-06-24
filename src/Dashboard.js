@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import styles from "./Dashboard.module.css";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Patient from "./pages/Patients/Patient/Patient.jsx";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Patients from "./pages/Patients/Patients.jsx";
 import Exams from "./pages/Exams/Exams.jsx";
 import Exam from "./pages/Exams/Exam/Exam";
@@ -18,10 +18,13 @@ import User from "./pages/Users/User/User.jsx";
 import Consultations from "./pages/Consultations/Consultations.jsx";
 import Consultation from "./pages/Consultations/Consultation/Consultation.jsx";
 import NewConsultation from "./pages/Consultations/New Consultation/NewConsultation.jsx";
-import Login from "./pages/Login/Login.jsx";
-const Dashboard = () => {
+import axios from "axios";
+import appData from "./assets/data/appData.js";
+import UserContext from "./UserContext.js";
+
+const DashboardContent = () => {
   return (
-    <div className={styles.appContainer}>
+    <>
       <div className={styles.navBar}>
         <Navbar />
       </div>
@@ -77,8 +80,33 @@ const Dashboard = () => {
           </Route>
         </Switch>
       </div>
-    </div>
+    </>
   );
+};
+
+const Dashboard = () => {
+  const [user, setUser] = useState({ isLoading: true });
+  useEffect(() => {
+    axios
+      .get(appData.apiUrl + "/userData", { withCredentials: true })
+      .then((res) => {
+        setUser(res.data);
+      });
+  }, []);
+  const userResult = useContext(UserContext);
+  if (user.isLoading) {
+    return <div>Cargando...</div>;
+  } else if (!user.isLoading && user) {
+    return (
+      <div className={styles.appContainer}>
+        <UserContext.Provider value={user}>
+          <DashboardContent />
+        </UserContext.Provider>
+      </div>
+    );
+  } else {
+    return <Redirect to="/login" />;
+  }
 };
 
 export default Dashboard;

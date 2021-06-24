@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CardContainer from "../General/CardContainer";
 import { IoMdAddCircle } from "react-icons/io";
 import styles from "./SolicitedExams.module.css";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import appData from "../../assets/data/appData";
 import moment from "moment";
+import UserContext from "../../UserContext";
 
 const SolicitedExamItem = (props) => {
   const [patient, setPatient] = useState({});
@@ -40,24 +41,40 @@ const SolicitedExamItem = (props) => {
 
 const SolicitedExams = () => {
   const [exams, setExams] = useState([]);
+  const user = useContext(UserContext);
 
   useEffect(() => {
-    axios
-      .get(appData.apiUrl + "/exams", { withCredentials: true })
-      .then((res) => {
-        setExams(res.data.data);
-      })
-      .catch((err) => {
-        alert("Ocurrió un error");
-      });
+    if (user && user.role === "laboratorista") {
+      axios
+        .get(appData.apiUrl + "/exams", { withCredentials: true })
+        .then((res) => {
+          setExams(res.data.data);
+        })
+        .catch((err) => {
+          alert("Ocurrió un error");
+        });
+    } else if (user && (user.role === "doctor" || user.role === "enfermero")) {
+      axios
+        .get(appData.apiUrl + "/assignedExams/" + user.id, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          setExams(res.data.data);
+        })
+        .catch((err) => {
+          alert("Ocurrió un error");
+        });
+    }
   }, []);
   return (
     <CardContainer>
       <h1>EXÁMENES SOLICITADOS</h1>
-      <Link to="examenes/nuevo" className={styles.newExam}>
-        <IoMdAddCircle />
-        SOLICITAR NUEVO EXAMEN
-      </Link>
+      {user && user.role === "doctor" && (
+        <Link to="examenes/nuevo" className={styles.newExam}>
+          <IoMdAddCircle />
+          SOLICITAR NUEVO EXAMEN
+        </Link>
+      )}
       {exams &&
         exams.map((exam) => (
           <SolicitedExamItem

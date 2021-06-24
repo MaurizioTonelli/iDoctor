@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CardContainer from "../General/CardContainer";
 import styles from "./ExamResults.module.css";
 import { IoSend } from "react-icons/io5";
@@ -6,6 +6,7 @@ import axios from "axios";
 import appData from "../../assets/data/appData";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import UserContext from "../../UserContext";
 
 const ExamResultCard = (props) => {
   return (
@@ -76,10 +77,13 @@ const AddCommentSection = ({ id, patientId }) => {
 };
 
 const ExamResults = ({ exam }) => {
+  const user = useContext(UserContext);
   return (
     <CardContainer>
       <h1>RESULTADOS</h1>
-      <AddCommentSection id={exam.id} patientId={exam.patientId} />
+      {user && user.role === "doctor" && (
+        <AddCommentSection id={exam.id} patientId={exam.patientId} />
+      )}
       {exam.entries &&
         exam.entries.map((entry) => (
           <CommentCard date={moment(entry.date).format("DD/MM/YYYY")}>

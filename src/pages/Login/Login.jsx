@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
+import axios from "axios";
+import appData from "../../assets/data/appData";
+import { useHistory } from "react-router-dom";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
+
   const login = (e) => {
     e.preventDefault();
-    alert("TO IMPLEMENT: Log in user");
+    axios
+      .post(
+        appData.apiUrl + "/login",
+        {
+          username: username,
+          password: password,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        history.push("/dashboard");
+      })
+      .catch((err) => {
+        alert("Los datos no son correctos");
+      });
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.loginContainer}>

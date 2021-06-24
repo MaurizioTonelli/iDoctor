@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PatientInfoCard from "../../../components/Patient/PatientInfoCard";
 import MedicalHistory from "../../../components/Patient/MedicalHistory";
 import MedicalExams from "../../../components/Patient/MedicalExams";
@@ -7,6 +7,7 @@ import axios from "axios";
 import appData from "../../../assets/data/appData";
 import { useParams, useHistory } from "react-router-dom";
 import NewPatientForm from "../../../components/Patient/NewPatientForm";
+import UserContext from "../../../UserContext";
 
 function isEmpty(obj) {
   for (var key in obj) {
@@ -19,6 +20,7 @@ const Patient = () => {
   const [patient, setPatient] = useState({});
   const [history, setHistory] = useState([]);
   const [exams, setExams] = useState([]);
+  const user = useContext(UserContext);
 
   const { id } = useParams();
   useEffect(() => {
@@ -42,9 +44,18 @@ const Patient = () => {
   return (
     <Whiteboard title="INFORMACIÓN DE PACIENTE">
       {patient && <PatientInfoCard patient={patient} />}
-      {history && <MedicalHistory history={history} />}
-      {exams && <MedicalExams exams={exams} />}
-      {!isEmpty(patient) && <NewPatientForm patient={patient} />}
+      {!user.isLoading &&
+        user &&
+        (user.role === "doctor" || user.role === "enfermero") &&
+        history && <MedicalHistory history={history} />}
+      {!user.isLoading &&
+        user &&
+        (user.role === "doctor" || user.role === "enfermero") &&
+        exams && <MedicalExams exams={exams} />}
+      {!user.isLoading &&
+        user &&
+        user.role === "administrador" &&
+        !isEmpty(patient) && <NewPatientForm patient={patient} />}
     </Whiteboard>
   );
 };

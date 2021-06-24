@@ -589,7 +589,7 @@ const PatientForm = ({ patient }) => {
 const NewPatientForm = (props) => {
   return (
     <CardContainer>
-      <h1>NUEVO PACIENTE</h1>
+      <h1>{props.patient ? "ACTUALIZAR PACIENTE" : "NUEVO PACIENTE"}</h1>
       <PatientForm patient={props.patient} />
     </CardContainer>
   );

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./PatientLinkCard.module.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import axios from "axios";
 import appData from "../../assets/data/appData";
+import UserContext from "../../UserContext";
 
 const PatientLinkCard = (props) => {
+  const user = useContext(UserContext);
   const [options, setOptions] = useState(false);
 
   const handleOpenOptions = () => {
@@ -59,9 +61,11 @@ const PatientLinkCard = (props) => {
         </div>
         {options && (
           <div className={styles.actions}>
-            <div className={styles.action}>
-              <button onClick={deletePatient}>Eliminar</button>
-            </div>
+            {user && user.role === "administrador" && (
+              <div className={styles.action}>
+                <button onClick={deletePatient}>Eliminar</button>
+              </div>
+            )}
             <div className={styles.action}>
               <button onClick={() => props.openDiagnose(props.id)}>
                 Asignar diagnóstico

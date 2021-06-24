@@ -23,6 +23,7 @@
 }
 .profile {
   background-color: #285372;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +32,7 @@
   padding: 5px;
   height: 50px;
 }
-.profile:hover {
+.profile:hover img {
   cursor: pointer;
   color: black;
   opacity: 0.5;
@@ -40,4 +41,21 @@
 .profileImage {
   max-height: 40px;
   clip-path: circle();
+}
+.actions {
+  position: absolute;
+  top: 50px;
+  right: 0;
+}
+.actions button {
+  width: 100px;
+  padding: 15px 0px;
+  border: none;
+  background-color: #3575a3;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}
+.actions button:hover {
+  background-color: #1f4561;
+  cursor: pointer;
 }

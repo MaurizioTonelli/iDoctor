@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import Whiteboard from "../../components/General/Whiteboard";
 import CardContainer from "../../components/General/CardContainer";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import {
   FaUsers,
   FaRegAddressBook,
@@ -10,6 +10,9 @@ import {
   FaUserPlus,
   FaUserMd,
 } from "react-icons/fa";
+import UserContext from "../../UserContext";
+import axios from "axios";
+import appData from "../../assets/data/appData";
 
 const ActionCard = ({ title, icon, url }) => {
   return (
@@ -20,18 +23,19 @@ const ActionCard = ({ title, icon, url }) => {
   );
 };
 
-const BienvenidaDoctor = () => {
+const BienvenidaDoctor = ({ user, rooms }) => {
   return (
     <CardContainer>
       <h1>Bienvenido, doctor</h1>
       <div className={styles.assignment}>
         <h2>
-          Consultorio asignado: <strong>34</strong>
+          Consultorio asignado: <strong>{user.consultingRoom}</strong>
         </h2>
       </div>
       <div className={styles.assignment}>
         <h2>
-          Habitaciones asignadas: <strong>1,3,5,6</strong>
+          Habitaciones asignadas:{" "}
+          <strong>{rooms.map((room) => room.room).join(",")}</strong>
         </h2>
       </div>
       <div className={styles.actionCards}>
@@ -54,14 +58,16 @@ const BienvenidaDoctor = () => {
     </CardContainer>
   );
 };
-const BienvenidaEnfermero = () => {
+const BienvenidaEnfermero = ({ rooms }) => {
+  console.log(rooms);
   return (
     <CardContainer>
       <h1>Bienvenido, enfermero</h1>
 
       <div className={styles.assignment}>
         <h2>
-          Habitaciones asignadas: <strong>1,3,5,6</strong>
+          Habitaciones asignadas:{" "}
+          <strong>{rooms.map((room) => room.room).join(",")}</strong>
         </h2>
       </div>
       <div className={styles.actionCards}>
@@ -114,12 +120,32 @@ const BienvenidaAdministrador = () => {
   );
 };
 const Home = () => {
+  const user = useContext(UserContext);
+  const [rooms, setRooms] = useState([]);
+  useEffect(() => {
+    axios
+      .get(appData.apiUrl + "/assignedRooms/" + user.id, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setRooms(res.data.data);
+      })
+      .catch((err) => {});
+  }, []);
   return (
     <Whiteboard title="iDOCTOR">
-      <BienvenidaDoctor />
-      <BienvenidaEnfermero />
-      <BienvenidaLaboratorista />
-      <BienvenidaAdministrador />
+      {!user.isLoading && user && user.role === "doctor" && (
+        <BienvenidaDoctor user={user} rooms={rooms} />
+      )}
+      {!user.isLoading && user && user.role === "enfermero" && (
+        <BienvenidaEnfermero rooms={rooms} />
+      )}
+      {!user.isLoading && user && user.role === "laboratorista" && (
+        <BienvenidaLaboratorista />
+      )}
+      {!user.isLoading && user && user.role === "administrador" && (
+        <BienvenidaAdministrador />
+      )}
     </Whiteboard>
   );
 };
