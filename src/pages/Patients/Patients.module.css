@@ -3,6 +3,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin: 10px;
+  justify-content: center;
 }
 
 .cardContainer {
@@ -29,4 +30,48 @@
   color: #aaa;
   font-size: 120px;
   margin: 0;
+}
+
+.modalBackground {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalCard {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px #666;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalCard h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+.cardInside {
+  display: flex;
+  flex-direction: column;
+}
+.cardInside input {
+  border: none;
+  padding: 10px;
+}
+.cardInside button {
+  border: none;
+  background-color: #d62b5e;
+  color: white;
+  padding: 8px;
+}
+.cardInside button:hover {
+  background-color: #921b3f;
+  cursor: pointer;
 }

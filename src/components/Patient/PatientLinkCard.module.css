@@ -59,7 +59,25 @@ h2 {
   top: 5px;
   font-size: 20px;
 }
-.options:hover {
+.options:hover .icon {
   opacity: 0.5;
+  cursor: pointer;
+}
+
+.actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+.actions button {
+  background-color: #d62b5e;
+  border: none;
+  color: white;
+  padding: 5px;
+  width: 150px;
+}
+.actions button:hover {
+  background-color: #b4224e;
   cursor: pointer;
 }

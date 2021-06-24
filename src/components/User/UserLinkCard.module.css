@@ -49,3 +49,31 @@ h2 {
   cursor: pointer;
   background-color: #8f1d3f;
 }
+.menuIcon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.menuIcon:hover .icon {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.moreMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.moreMenu button {
+  background-color: #d62b5e;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+  width: 80px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+.moreMenu button:hover {
+  cursor: pointer;
+}

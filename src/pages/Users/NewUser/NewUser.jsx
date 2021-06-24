@@ -70,7 +70,6 @@ const UserForm = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
         history.push("/dashboard/personal");
       })
       .catch((err) => {
@@ -90,6 +89,8 @@ const UserForm = () => {
           name="picture"
           id="picture"
           onChange={handleFileChange}
+          accept="image/*"
+          multiple={false}
         />
         <label htmlFor="userType">Rol de usuario</label>
         <select
