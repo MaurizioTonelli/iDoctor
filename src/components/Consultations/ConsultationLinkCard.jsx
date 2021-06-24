@@ -7,6 +7,8 @@ import moment from "moment";
 
 const ConsultationLinkCard = ({ consultation }) => {
   const [patient, setPatient] = useState({});
+  const [timeToConsultation, setTimeToConsultation] = useState();
+  const [openActions, setOpenActions] = useState(false);
   useEffect(() => {
     axios
       .get(appData.apiUrl + "/patient/" + consultation.patientId, {
@@ -20,6 +22,27 @@ const ConsultationLinkCard = ({ consultation }) => {
         alert("Ocurrió un error");
       });
   }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeToConsultation(moment(consultation.datetime) < moment(new Date()));
+      console.log(moment(consultation.datetime) < moment(new Date()));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const deleteConsultation = () => {
+    axios
+      .delete(appData.apiUrl + "/consultation/" + consultation.id, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        alert("Ocurrió un error");
+      });
+  };
+
   return (
     <div className={styles.cardContainer}>
       <img
@@ -36,14 +59,25 @@ const ConsultationLinkCard = ({ consultation }) => {
       <h2 className={styles.roomNumber}>
         CONSULTORIO {patient.consultingRoom}
       </h2>
-      <a
-        className={styles.link}
-        href={"/dashboard/consultas/" + consultation.id}
+      {timeToConsultation && (
+        <a
+          className={styles.link}
+          href={"/dashboard/consultas/" + consultation.id}
+        >
+          REALIZAR CONSULTA
+        </a>
+      )}
+      <div
+        className={styles.options}
+        onMouseEnter={() => setOpenActions(true)}
+        onMouseLeave={() => setOpenActions(false)}
       >
-        REALIZAR CONSULTA
-      </a>
-      <div className={styles.options}>
         <BsThreeDotsVertical />
+        {openActions && (
+          <div className={styles.actions}>
+            <button onClick={deleteConsultation}>Eliminar</button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -63,3 +63,20 @@ h2 {
   opacity: 0.5;
   cursor: pointer;
 }
+
+.actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.actions button {
+  background-color: #d62b5e;
+  border: none;
+  color: white;
+  padding: 8px;
+  width: 70px;
+}
+.actions button:hover {
+  cursor: pointer;
+}
