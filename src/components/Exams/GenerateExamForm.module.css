@@ -20,3 +20,17 @@
   background-color: #911e40;
   cursor: pointer;
 }
+
+.results {
+  background-color: #d62b5e;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+}
+.results:hover {
+  background-color: #9b1e44;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}

@@ -46,15 +46,17 @@
   color: #333;
   margin-left: 5px;
 }
-.itemContainer button {
+.itemContainer a {
   color: white;
   font-family: "Open Sans", sans-serif;
   margin-left: auto;
   padding: 5px;
   background-color: rgb(219, 60, 86);
   border: none;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
 }
-.itemContainer button:hover {
+.itemContainer a:hover {
   background-color: rgb(143, 42, 58);
   cursor: pointer;
 }
