@@ -143,7 +143,7 @@ const PatientForm = ({ patient }) => {
       );
     })
   ) : (
-    <p>No hay doctores asignados</p>
+    <p>No hay enfermeros asignados</p>
   );
 
   const handleAddIllness = (e) => {
@@ -568,7 +568,7 @@ const PatientForm = ({ patient }) => {
           </button>
         </div>
         <fieldset>
-          <legend>Doctores asignados</legend>
+          <legend>Enfermeros asignados</legend>
           <ul>{nurseListSection}</ul>
         </fieldset>
         <input type="submit" value="AGREGAR PACIENTE" />

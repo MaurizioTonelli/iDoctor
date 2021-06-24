@@ -2,6 +2,7 @@ import React from "react";
 import CardContainer from "../General/CardContainer";
 import styles from "./MedicalHistory.module.css";
 import { IoMdAddCircle } from "react-icons/io";
+import moment from "moment";
 
 const MedicalHistoryItem = (props) => {
   return (
@@ -27,18 +28,12 @@ const MedicalHistory = (props) => {
           </button>
         </div>
       )}
-      <MedicalHistoryItem date="23/06/2019">
-        Se realizó estudio de sangre, los resultados indican Hepatitis A
-      </MedicalHistoryItem>
-      <MedicalHistoryItem date="23/06/2019">
-        Se realizó estudio de sangre, los resultados indican Hepatitis A
-      </MedicalHistoryItem>
-      <MedicalHistoryItem date="23/06/2019">
-        Se realizó estudio de sangre, los resultados indican Hepatitis A
-      </MedicalHistoryItem>
-      <MedicalHistoryItem date="23/06/2019">
-        Se realizó estudio de sangre, los resultados indican Hepatitis A
-      </MedicalHistoryItem>
+      {props.history &&
+        props.history.map((item) => (
+          <MedicalHistoryItem date={moment(item.date).format("DD/MM/YYYY")}>
+            {item.entry}
+          </MedicalHistoryItem>
+        ))}
     </CardContainer>
   );
 };

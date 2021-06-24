@@ -30,7 +30,7 @@ const CommentCard = (props) => {
     </div>
   );
 };
-const AddCommentSection = ({ id }) => {
+const AddCommentSection = ({ id, patientId }) => {
   const [comment, setComment] = useState("");
   const validateForm = () => {
     if (comment === "") {
@@ -46,6 +46,7 @@ const AddCommentSection = ({ id }) => {
     formData.append("examId", id);
     formData.append("comment", comment);
     formData.append("date", date);
+    formData.append("patientId", patientId);
     axios
       .post(appData.apiUrl + "/exams/entry/" + id, formData, {
         withCredentials: true,
@@ -78,7 +79,7 @@ const ExamResults = ({ exam }) => {
   return (
     <CardContainer>
       <h1>RESULTADOS</h1>
-      <AddCommentSection id={exam.id} />
+      <AddCommentSection id={exam.id} patientId={exam.patientId} />
       {exam.entries &&
         exam.entries.map((entry) => (
           <CommentCard date={moment(entry.date).format("DD/MM/YYYY")}>

@@ -17,20 +17,33 @@ function isEmpty(obj) {
 
 const Patient = () => {
   const [patient, setPatient] = useState({});
+  const [history, setHistory] = useState([]);
+  const [exams, setExams] = useState([]);
+
   const { id } = useParams();
   useEffect(() => {
-    axios
-      .get(appData.apiUrl + "/patient/" + id, { withCredentials: true })
-      .then((res) => {
-        setPatient(res.data.data[0]);
-        console.log(res.data.data[0]);
+    async function fetchData() {
+      const patient = await axios.get(appData.apiUrl + "/patient/" + id, {
+        withCredentials: true,
       });
+      setPatient(patient.data.data[0]);
+      const exams = await axios.get(appData.apiUrl + "/patient/exams/" + id, {
+        withCredentials: true,
+      });
+      setExams(exams.data.data);
+      const history = await axios.get(
+        appData.apiUrl + "/patient/history/" + id,
+        { withCredentials: true }
+      );
+      setHistory(history.data.data);
+    }
+    fetchData();
   }, []);
   return (
     <Whiteboard title="INFORMACIÓN DE PACIENTE">
       {patient && <PatientInfoCard patient={patient} />}
-      <MedicalHistory />
-      <MedicalExams />
+      {history && <MedicalHistory history={history} />}
+      {exams && <MedicalExams exams={exams} />}
       {!isEmpty(patient) && <NewPatientForm patient={patient} />}
     </Whiteboard>
   );

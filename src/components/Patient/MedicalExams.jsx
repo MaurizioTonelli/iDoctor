@@ -1,6 +1,7 @@
 import React from "react";
 import CardContainer from "../General/CardContainer";
 import styles from "./MedicalExams.module.css";
+import moment from "moment";
 
 const MedicalExamItem = (props) => {
   return (
@@ -10,31 +11,33 @@ const MedicalExamItem = (props) => {
       <div className={styles.message}>{props.children}</div>
       <div
         className={`${styles.status} ${
-          props.delivered ? styles.delivered : styles.pending
+          props.result ? styles.delivered : styles.pending
         }`}
       >
-        {props.delivered ? "ENTREGADO" : "PENDIENTE"}
+        {props.result ? "ENTREGADO" : "PENDIENTE"}
       </div>
     </div>
   );
 };
 
-const MedicalExams = () => {
+const MedicalExams = ({ exams }) => {
   return (
     <CardContainer>
       <h1>EXÁMENES MÉDICOS</h1>
-      <MedicalExamItem date="23/06/2019" invoice="3434">
-        Se realizó estudio de sangre, los resultados indican Hepatitis A
-      </MedicalExamItem>
-      <MedicalExamItem date="23/06/2019" delivered>
-        Se realizó estudio de sangre, los resultados indican Hepatitis A
-      </MedicalExamItem>
-      <MedicalExamItem date="23/06/2019">
-        Se realizó estudio de sangre, los resultados indican Hepatitis A
-      </MedicalExamItem>
-      <MedicalExamItem date="23/06/2019">
-        Se realizó estudio de sangre, los resultados indican Hepatitis A
-      </MedicalExamItem>
+      {exams &&
+        exams.map((exam) => (
+          <MedicalExamItem
+            date={
+              exam.dateResolved
+                ? moment(exam.dateResolved).format("DD/MM/YYYY")
+                : moment(exam.dateRequested).format("DD/MM/YYYY")
+            }
+            invoice={exam.id}
+            result={exam.result}
+          >
+            {exam.name}
+          </MedicalExamItem>
+        ))}
     </CardContainer>
   );
 };
