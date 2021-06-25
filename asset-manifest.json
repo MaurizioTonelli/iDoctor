@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/iDoctor/static/css/main.463ece3c.chunk.css",
-    "main.js": "/iDoctor/static/js/main.bbf67387.chunk.js",
-    "main.js.map": "/iDoctor/static/js/main.bbf67387.chunk.js.map",
+    "main.js": "/iDoctor/static/js/main.68fb1bee.chunk.js",
+    "main.js.map": "/iDoctor/static/js/main.68fb1bee.chunk.js.map",
     "runtime-main.js": "/iDoctor/static/js/runtime-main.bd2a4f10.js",
     "runtime-main.js.map": "/iDoctor/static/js/runtime-main.bd2a4f10.js.map",
     "static/js/2.689a1923.chunk.js": "/iDoctor/static/js/2.689a1923.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.bd2a4f10.js",
     "static/js/2.689a1923.chunk.js",
     "static/css/main.463ece3c.chunk.css",
-    "static/js/main.bbf67387.chunk.js"
+    "static/js/main.68fb1bee.chunk.js"
   ]
 }
