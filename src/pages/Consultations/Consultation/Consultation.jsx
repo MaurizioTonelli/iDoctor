@@ -42,7 +42,7 @@ const Consultation = () => {
       setHistory(history.data.data);
     }
     fetchData();
-  }, []);
+  }, [id]);
 
   const deleteConsultation = () => {
     axios

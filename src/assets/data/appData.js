@@ -1,5 +1,5 @@
 const data = {
-  apiUrl: "https://idoctor-desarrolloweb.herokuapp.com",
+  apiUrl: "http://localhost:4000",
 };
 
 export default data;

@@ -41,12 +41,6 @@ const UserInfoCard = (props) => {
             </div>
           )}
         </div>
-        {(props.role === "doctor" || props.role === "enfermero") && (
-          <div className={styles.info}>
-            <h1>HABITACIONES ASIGNADAS</h1>
-            <p>Por implementar</p>
-          </div>
-        )}
       </div>
     </CardContainer>
   );

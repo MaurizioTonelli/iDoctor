@@ -21,14 +21,14 @@ const ConsultationLinkCard = ({ consultation }) => {
       .catch((err) => {
         alert("Ocurrió un error");
       });
-  }, []);
+  }, [consultation.patientId]);
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeToConsultation(moment(consultation.datetime) < moment(new Date()));
       console.log(moment(consultation.datetime) < moment(new Date()));
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [consultation.datetime]);
 
   const deleteConsultation = () => {
     axios
