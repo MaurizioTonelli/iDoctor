@@ -5,16 +5,19 @@ import Login from "./pages/Login/Login";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-      </Switch>
-    </Router>
+    <>
+      <div>Bienvenido a iDoctor</div>
+      <Router>
+        <Switch>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 

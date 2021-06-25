@@ -21,6 +21,7 @@ const Login = () => {
         { withCredentials: true }
       )
       .then((res) => {
+        console.log(res);
         history.push("/dashboard");
       })
       .catch((err) => {
