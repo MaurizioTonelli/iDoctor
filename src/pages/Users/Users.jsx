@@ -14,7 +14,9 @@ const Users = () => {
 
   useEffect(() => {
     axios
-      .get(appData.apiUrl + "/users", { withCredentials: true })
+      .get(appData.apiUrl + "/users", {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         let doctorArray = res.data.data.filter(
           (user) => user.role === "doctor"

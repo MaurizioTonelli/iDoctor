@@ -28,7 +28,7 @@ const MedicalHistory = (props) => {
     formData.append("comment", entry);
     axios
       .post(appData.apiUrl + "/patient/history/" + props.patient.id, formData, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         window.location.reload(false);

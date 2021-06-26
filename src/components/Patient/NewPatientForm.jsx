@@ -70,12 +70,16 @@ const PatientForm = ({ patient }) => {
       });
 
     axios
-      .get(appData.apiUrl + "/users/doctors", { withCredentials: true })
+      .get(appData.apiUrl + "/users/doctors", {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         setDoctors(res.data.data);
       });
     axios
-      .get(appData.apiUrl + "/users/nurses", { withCredentials: true })
+      .get(appData.apiUrl + "/users/nurses", {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         setNurses(res.data.data);
       });
@@ -303,7 +307,7 @@ const PatientForm = ({ patient }) => {
     if (patient) {
       axios
         .put(appData.apiUrl + "/patient/" + patient.id, formData, {
-          withCredentials: true,
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
         })
         .then((res) => {
           window.location.reload(false);
@@ -313,7 +317,9 @@ const PatientForm = ({ patient }) => {
         });
     } else {
       axios
-        .post(appData.apiUrl + "/patients", formData, { withCredentials: true })
+        .post(appData.apiUrl + "/patients", formData, {
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
+        })
         .then((res) => {
           console.log(res);
           history.push("/dashboard/pacientes");

@@ -26,16 +26,18 @@ const Patient = () => {
   useEffect(() => {
     async function fetchData() {
       const patient = await axios.get(appData.apiUrl + "/patient/" + id, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       });
       setPatient(patient.data.data[0]);
       const exams = await axios.get(appData.apiUrl + "/patient/exams/" + id, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       });
       setExams(exams.data.data);
       const history = await axios.get(
         appData.apiUrl + "/patient/history/" + id,
-        { withCredentials: true }
+        {
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
+        }
       );
       setHistory(history.data.data);
     }

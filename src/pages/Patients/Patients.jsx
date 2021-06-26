@@ -35,12 +35,13 @@ const DiagnosticModal = (props) => {
     formData.append("diagnosis", diagnosis);
     axios
       .put(appData.apiUrl + "/patient/diagnose/" + props.id, formData, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         window.location.reload(false);
       })
       .catch((res) => {
+        console.log(res);
         alert("Ocurrió un error");
       });
   };
@@ -72,7 +73,7 @@ const TransferModal = (props) => {
     formData.append("room", room);
     axios
       .put(appData.apiUrl + "/patient/transfer/" + props.id, formData, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         window.location.reload(false);
@@ -135,16 +136,20 @@ const Patients = () => {
   useEffect(() => {
     if (user && user.role === "administrador") {
       axios
-        .get(appData.apiUrl + "/patients", { withCredentials: true })
+        .get(appData.apiUrl + "/patients", {
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
+        })
         .then((res) => {
+          console.log(res.data.data);
           setPatients(res.data.data);
         });
     } else if (user && (user.role === "doctor" || user.role === "enfermero")) {
       axios
         .get(appData.apiUrl + "/assignedPatients/" + user.id, {
-          withCredentials: true,
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
         })
         .then((res) => {
+          console.log(res.data);
           setPatients(res.data.data);
         });
     }

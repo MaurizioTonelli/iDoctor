@@ -125,7 +125,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(appData.apiUrl + "/assignedRooms/" + user.id, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         setRooms(res.data.data);

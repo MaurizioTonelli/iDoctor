@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Whiteboard from "../../../components/General/Whiteboard";
 import styles from "./NewConsultation.module.css";
 import CardContainer from "../../../components/General/CardContainer";
@@ -6,6 +6,7 @@ import axios from "axios";
 import appData from "../../../assets/data/appData";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
+import UserContext from "../../../UserContext";
 
 const ConsultationForm = (props) => {
   const [patientId, setPatientId] = useState("");
@@ -38,7 +39,7 @@ const ConsultationForm = (props) => {
     }
     axios
       .post(appData.apiUrl + "/consultations", formData, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         history.push("/dashboard/consultas");
@@ -97,9 +98,12 @@ const ConsultationForm = (props) => {
 
 const NewConsultation = () => {
   const [patients, setPatients] = useState([]);
+  const user = useContext(UserContext);
   useEffect(() => {
     axios
-      .get(appData.apiUrl + "/patients", { withCredentials: true })
+      .get(appData.apiUrl + "/assignedPatients/" + user.id, {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         setPatients(res.data.data);
       })

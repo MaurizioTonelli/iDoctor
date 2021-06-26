@@ -67,7 +67,7 @@ const UserForm = () => {
 
     axios
       .post(appData.apiUrl + "/users", formData, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         history.push("/dashboard/personal");

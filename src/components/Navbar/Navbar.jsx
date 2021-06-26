@@ -5,6 +5,7 @@ import { BsChevronDown } from "react-icons/bs";
 import UserContext from "../../UserContext";
 import appData from "../../assets/data/appData";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Notifications = () => {
   return (
@@ -16,14 +17,8 @@ const Notifications = () => {
 const Profile = ({ user }) => {
   const [openActions, setOpenActions] = useState(false);
   const logout = () => {
-    axios
-      .post(appData.apiUrl + "/logout", {}, { withCredentials: true })
-      .then((res) => {
-        window.location.reload(false);
-      })
-      .catch((err) => {
-        alert("Ocurrió un error");
-      });
+    localStorage.setItem("token", null);
+    window.location.reload(false);
   };
 
   return (

@@ -15,14 +15,14 @@ const Exam = () => {
   useEffect(() => {
     async function fetchData() {
       const res = await axios.get(appData.apiUrl + "/exam/" + id, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       });
       setExam(res.data.data[0]);
       console.log(res.data.data[0]);
       const patient = await axios.get(
         appData.apiUrl + "/patient/" + res.data.data[0].patientId,
         {
-          withCredentials: true,
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
         }
       );
       setPatient(patient.data.data[0]);

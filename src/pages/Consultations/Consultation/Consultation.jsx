@@ -22,22 +22,30 @@ const Consultation = () => {
     async function fetchData() {
       const consultation = await axios.get(
         appData.apiUrl + "/consultation/" + id,
-        { withCredentials: true }
+        {
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
+        }
       );
       setConsultation(consultation.data.data[0]);
       const patient = await axios.get(
         appData.apiUrl + "/patient/" + consultation.data.data[0].patientId,
-        { withCredentials: true }
+        {
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
+        }
       );
       setPatient(patient.data.data[0]);
       const exams = await axios.get(
         appData.apiUrl + "/patient/exams/" + patient.data.data[0].id,
-        { withCredentials: true }
+        {
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
+        }
       );
       setExams(exams.data.data);
       const history = await axios.get(
         appData.apiUrl + "/patient/history/" + patient.data.data[0].id,
-        { withCredentials: true }
+        {
+          headers: { authorization: "Bearer " + localStorage.getItem("token") },
+        }
       );
       setHistory(history.data.data);
     }
@@ -47,7 +55,7 @@ const Consultation = () => {
   const deleteConsultation = () => {
     axios
       .delete(appData.apiUrl + "/consultation/" + consultation.id, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         routerHistory.push("/dashboard/consultas");

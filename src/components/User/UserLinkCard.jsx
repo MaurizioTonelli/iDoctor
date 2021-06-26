@@ -9,7 +9,9 @@ const UserLinkCard = (props) => {
   const [moreMenu, setMoreMenu] = useState(false);
   const deleteUser = () => {
     axios
-      .delete(appData.apiUrl + "/user/" + props.id, { withCredentials: true })
+      .delete(appData.apiUrl + "/user/" + props.id, {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         if (res.status === 500) {
           alert("Un error ocurrió al eliminar el usuario");
@@ -30,7 +32,7 @@ const UserLinkCard = (props) => {
       <h2 className={styles.role}>ROL: {props.role}</h2>
 
       <h2 className={styles.username}>USUARIO: {props.username}</h2>
-      <a className={styles.link} href={"/dashboard/personal/" + props.id}>
+      <a className={styles.link} href={"#/dashboard/personal/" + props.id}>
         VER MÁS
       </a>
       <div

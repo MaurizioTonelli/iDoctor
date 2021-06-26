@@ -50,7 +50,7 @@ const AddCommentSection = ({ id, patientId }) => {
     formData.append("patientId", patientId);
     axios
       .post(appData.apiUrl + "/exams/entry/" + id, formData, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         window.location.reload(false);

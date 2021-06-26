@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Whiteboard from "../../../components/General/Whiteboard";
 import CardContainer from "../../../components/General/CardContainer";
 import styles from "./SolicitExam.module.css";
@@ -6,12 +6,14 @@ import axios from "axios";
 import appData from "../../../assets/data/appData";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
+import UserContext from "../../../UserContext";
 
 const ExamForm = () => {
   const [name, setName] = useState("");
   const [patientId, setPatientId] = useState("");
   const [patients, setPatients] = useState([]);
   const [errors, setErrors] = useState([]);
+  const user = useContext(UserContext);
 
   const history = useHistory();
 
@@ -41,7 +43,9 @@ const ExamForm = () => {
     formData.append("date", now);
 
     axios
-      .post(appData.apiUrl + "/exams", formData, { withCredentials: true })
+      .post(appData.apiUrl + "/exams", formData, {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         history.push("/dashboard/examenes");
       })
@@ -52,7 +56,9 @@ const ExamForm = () => {
 
   useEffect(() => {
     axios
-      .get(appData.apiUrl + "/patients", { withCredentials: true })
+      .get(appData.apiUrl + "/assignedPatients/" + user.id, {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         setPatients(res.data.data);
       })

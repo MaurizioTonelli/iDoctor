@@ -108,7 +108,7 @@ const UserForm = (props) => {
 
     axios
       .put(appData.apiUrl + "/user/" + props.id, formData, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         console.log(res);
@@ -230,7 +230,9 @@ const User = () => {
   useEffect(() => {
     console.log(id);
     axios
-      .get(appData.apiUrl + "/user/" + id, { withCredentials: true })
+      .get(appData.apiUrl + "/user/" + id, {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         console.log(res.data.data[0]);
         setUser(res.data.data[0]);

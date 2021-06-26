@@ -12,16 +12,12 @@ const Login = () => {
   const login = (e) => {
     e.preventDefault();
     axios
-      .post(
-        appData.apiUrl + "/login",
-        {
-          username: username,
-          password: password,
-        },
-        { withCredentials: true }
-      )
+      .post(appData.apiUrl + "/login", {
+        username: username,
+        password: password,
+      })
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("token", res.data.data);
         history.push("/dashboard");
       })
       .catch((err) => {

@@ -24,7 +24,7 @@ const Consultations = () => {
   useEffect(() => {
     async function fetchData() {
       const consultations = await axios.get(appData.apiUrl + "/consultations", {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       });
       setConsultations(consultations.data.data);
       console.log(consultations.data.data);

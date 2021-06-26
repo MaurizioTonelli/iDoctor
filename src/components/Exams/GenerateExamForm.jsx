@@ -28,7 +28,9 @@ const GenerateExamForm = (props) => {
     formData.append("file", file);
     formData.append("dateResolved", date);
     axios
-      .put(appData.apiUrl + "/exam/" + id, formData, { withCredentials: true })
+      .put(appData.apiUrl + "/exam/" + id, formData, {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         window.location.reload(false);
       })

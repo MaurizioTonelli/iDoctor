@@ -11,7 +11,7 @@ const SolicitedExamItem = (props) => {
   useEffect(() => {
     axios
       .get(appData.apiUrl + "/patient/" + props.patientId, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         setPatient(res.data.data[0]);
@@ -42,7 +42,9 @@ const ExamsToGenerate = () => {
 
   useEffect(() => {
     axios
-      .get(appData.apiUrl + "/exams", { withCredentials: true })
+      .get(appData.apiUrl + "/exams", {
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
+      })
       .then((res) => {
         setExams(res.data.data);
       })

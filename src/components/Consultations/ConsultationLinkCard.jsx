@@ -12,7 +12,7 @@ const ConsultationLinkCard = ({ consultation }) => {
   useEffect(() => {
     axios
       .get(appData.apiUrl + "/patient/" + consultation.patientId, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         setPatient(res.data.data[0]);
@@ -33,7 +33,7 @@ const ConsultationLinkCard = ({ consultation }) => {
   const deleteConsultation = () => {
     axios
       .delete(appData.apiUrl + "/consultation/" + consultation.id, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((res) => {
         window.location.reload(false);
@@ -62,7 +62,7 @@ const ConsultationLinkCard = ({ consultation }) => {
       {timeToConsultation && (
         <a
           className={styles.link}
-          href={"/dashboard/consultas/" + consultation.id}
+          href={"#/dashboard/consultas/" + consultation.id}
         >
           REALIZAR CONSULTA
         </a>

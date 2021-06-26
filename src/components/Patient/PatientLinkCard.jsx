@@ -18,7 +18,7 @@ const PatientLinkCard = (props) => {
   const deletePatient = () => {
     axios
       .delete(appData.apiUrl + "/patient/" + props.id, {
-        withCredentials: true,
+        headers: { authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then(() => {
         window.location.reload(false);
@@ -48,39 +48,41 @@ const PatientLinkCard = (props) => {
           CONSULTORIO {props.consultingRoom}
         </h2>
       )}
-      <a className={styles.link} href={"/dashboard/pacientes/" + props.id}>
+      <a className={styles.link} href={"#/dashboard/pacientes/" + props.id}>
         VER HISTORIAL
       </a>
-      <div
-        className={styles.options}
-        onMouseEnter={handleOpenOptions}
-        onMouseLeave={handleCloseOptions}
-      >
-        <div className={styles.icon}>
-          <BsThreeDotsVertical />
-        </div>
-        {options && (
-          <div className={styles.actions}>
-            {user && user.role === "administrador" && (
+      {user && (user.role === "doctor" || user.role === "administrador") && (
+        <div
+          className={styles.options}
+          onMouseEnter={handleOpenOptions}
+          onMouseLeave={handleCloseOptions}
+        >
+          <div className={styles.icon}>
+            <BsThreeDotsVertical />
+          </div>
+          {options && (
+            <div className={styles.actions}>
+              {user && user.role === "administrador" && (
+                <div className={styles.action}>
+                  <button onClick={deletePatient}>Eliminar</button>
+                </div>
+              )}
               <div className={styles.action}>
-                <button onClick={deletePatient}>Eliminar</button>
-              </div>
-            )}
-            <div className={styles.action}>
-              <button onClick={() => props.openDiagnose(props.id)}>
-                Asignar diagnóstico
-              </button>
-            </div>
-            {props.room && (
-              <div className={styles.action}>
-                <button onClick={() => props.openTransfer(props.id)}>
-                  Transferir
+                <button onClick={() => props.openDiagnose(props.id)}>
+                  Asignar diagnóstico
                 </button>
               </div>
-            )}
-          </div>
-        )}
-      </div>
+              {props.room && (
+                <div className={styles.action}>
+                  <button onClick={() => props.openTransfer(props.id)}>
+                    Transferir
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

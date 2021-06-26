@@ -88,15 +88,23 @@ const Dashboard = () => {
   const [user, setUser] = useState({ isLoading: true });
   useEffect(() => {
     axios
-      .get(appData.apiUrl + "/userData", { withCredentials: true })
+      .get(appData.apiUrl + "/userData", {
+        headers: {
+          authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
       .then((res) => {
-        setUser(res.data);
+        console.log(res.data);
+        setUser(res.data.user);
+      })
+      .catch((err) => {
+        setUser(null);
       });
   }, []);
   const userResult = useContext(UserContext);
-  if (user.isLoading) {
+  if (user && user.isLoading) {
     return <div>Cargando...</div>;
-  } else if (!user.isLoading && user) {
+  } else if (user && !user.isLoading) {
     return (
       <div className={styles.appContainer}>
         <UserContext.Provider value={user}>
